@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    
+    <script> 
+        
+    window.onbeforeunload = function() {
+    return "Are you sure?";
+    };
+
+    function activate_button() {    
+    $.post("submitResponse.php", 
+            {     	
+            Participant: ppt_id,
+            Ppt_condition: ppt_condition,
+            Story_choiceset: story_choiceset,
+            Age: ppt_age,
+            Gender: ppt_gender,
+            Education: ppt_education,
+            Political_identification: ppt_political,
+            Block: block_id,
+            Trial: trial_id,
+            Choiceset: choiceset_id,
+            Choice: this_choice_id,
+            Choice_changed: this_choice_changed,
+            Additional_foundation: additional_foundation,
+
+            Coins_moral_chosen: coins_moral_chosen,
+            Coins_economic_chosen: coins_economic_chosen,
+            Coins_moral_not_chosen: coins_moral_not_chosen,
+            Coins_economic_not_chosen: coins_economic_not_chosen,
+
+            Outcome_moral_chosen: outcome_moral_chosen,
+            Outcome_economic_chosen: outcome_economic_chosen,
+            Outcome_moral_not_chosen: outcome_moral_not_chosen,        
+            Outcome_economic_not_chosen: outcome_economic_not_chosen,        
+
+            Story: text,
+            MFQ_harm: mfq_harm,
+            MFQ_fairness: mfq_fairness,
+            MFQ_ingroup: mfq_ingroup,
+            MFQ_authority: mfq_authority,
+            MFQ_purity: mfq_purity,
+            MFQ_math_catch: mfq_math_catch,
+            MFQ_good_catch: mfq_good_catch
+            });
+        }
+
+function printFunction() {
+            $("#randtest41").text("ID: " + ppt_id);
+            $("#randtest42").text("Ppt_condition: " + ppt_condition);
+            $("#randtest37").text("Story_choiceset: " + story_choiceset);
+            $("#randtest16").text("Age: " + ppt_age);
+            $("#randtest17").text("Gender: " + ppt_gender);
+            $("#randtest18").text("Education: " + ppt_education);
+            $("#randtest19").text("Political: " + ppt_political);
+            $("#randtest20").text("Block_id: " + block_id);
+            $("#randtest21").text("Trial_id: " + trial_id);
+            $("#randtest23").text("Choiseset_id: " + choiceset_id);
+            $("#randtest24").text("This_choice_id: " + this_choice_id);
+            $("#randtest56").text("This_choice_changed: " + this_choice_changed);
+            $("#randtest26").text("Additional_foundation: " + additional_foundation);
+            $("#randtest43").text("Coins_moral_chosen: " + coins_moral_chosen);  
+            $("#randtest44").text("Coins_economic_chosen: " + coins_economic_chosen); 
+            $("#randtest45").text("Coins_moral_not_chosen: " + coins_moral_not_chosen); 
+            $("#randtest46").text("Coins_economic_not_chosen: " + coins_economic_not_chosen); 
+            $("#randtest52").text("Outcome_moral_chosen: " + outcome_moral_chosen); 
+            $("#randtest53").text("Outcome_economic_chosen: " + outcome_economic_chosen); 
+            $("#randtest54").text("Outcome_moral_not_chosen: " + outcome_moral_not_chosen); 
+            $("#randtest55").text("Outcome_economic_not_chosen: " + outcome_economic_not_chosen);           
+            
+            $("#randtest22").text("Text: " + text);         
+            $("#randtest35").text("mfq_harm: " + mfq_harm);
+            $("#randtest36").text("mfq_fairness: " + mfq_fairness); 
+            $("#randtest47").text("mfq_ingroup: " + mfq_ingroup); 
+            $("#randtest48").text("mfq_authority: " + mfq_authority); 
+            $("#randtest49").text("mfq_purity: " + mfq_purity); 
+            $("#randtest50").text("mfq_math_catch: " + mfq_math_catch); 
+            $("#randtest51").text("mfq_good_catch: " + mfq_good_catch);  
+    
+            $("#randtest27").text("coins_moral_option1: " + coins_moral_option1);  
+            $("#randtest28").text("coins_moral_option2: " + coins_moral_option2); 
+            $("#randtest29").text("coins_economic_option1: " + coins_economic_option1); 
+            $("#randtest30").text("coins_economic_option2: " + coins_economic_option2);             
+            $("#randtest31").text("outcome_moral_option1: " + outcome_moral_option1);  
+            $("#randtest32").text("outcome_moral_option2: " + outcome_moral_option2); 
+            $("#randtest33").text("outcome_economic_option1: " + outcome_economic_option1); 
+            $("#randtest34").text("outcome_economic_option2: " + outcome_economic_option2);
+        }
+
+
+    function conditionFunction() {
+            var rand = Math.random();
+            storySet = Math.floor(Math.random() * (5 - 0 + 1)) + 0;
+            story_choiceset = choicesets[storySet];
+            ppt_id = Math.floor(Math.random() * (1000000000 - 1 + 1)) + 1;
+            block_id = "Part I"
+            if (rand < 1/3) {
+                condition = "control";
+                story_choiceset = null;
+            } else if (rand >= 1/3 && rand < 2/3) {
+                condition = "accountability";
+            } else {
+                condition = "sales";
+            }
+            ppt_condition = condition;
+            activate_button();
+            printFunction(); ////////////////////
+        }
+        window.onload = conditionFunction;
+        
+    var ppt_id,
+        ppt_condition,
+        story_choiceset,
+        ppt_age,
+        ppt_gender,
+        ppt_education,
+        ppt_political,
+        block_id,
+        trial_id,
+        choiceset_id,
+        this_choice_id,
+        this_choice_changed,
+        additional_foundation,
+        
+        coins_moral_chosen,
+        coins_economic_chosen,
+        coins_moral_not_chosen,
+        coins_economic_not_chosen,
+        
+        outcome_moral_chosen,
+        outcome_economic_chosen,
+        outcome_moral_not_chosen,
+        outcome_economic_not_chosen,   
+
+        text,
+             
+        mfq_harm, 
+        mfq_fairness, 
+        mfq_ingroup, 
+        mfq_authority, 
+        mfq_purity, 
+        mfq_math_catch,
+        mfq_good_catch,
+        
+
+        //Extra 
+        coins_moral_option1,
+        coins_moral_option2,
+        coins_economic_option1,
+        coins_economic_option2,           
+        outcome_moral_option1,
+        outcome_moral_option2,
+        outcome_economic_option1,
+        outcome_economic_option2,
+        mfq_1,mfq_2,mfq_3,mfq_4,mfq_5,mfq_6,mfq_7,mfq_8,mfq_9,mfq_10,mfq_11,mfq_12,mfq_13,mfq_14,mfq_15,mfq_16,mfq_17,mfq_18,mfq_19,mfq_20,mfq_21,mfq_22,mfq_23,mfq_24,mfq_25,mfq_26,mfq_27,mfq_28,mfq_29,mfq_30,mfq_31,mfq_32,
+        
+        i,j,k,words,storySet,agree,totalCoins;
+        
+    var choice = [];
+    var choice2 = [];
+    var changed = [];
+    var coins = [];
+        coins[0] = [];
+        coins[1] = [];
+        coins[2] = [];
+        coins[3] = [];
+    var outcomes = [];
+        outcomes[0] = [];
+        outcomes[1] = [];
+        outcomes[2] = [];
+        outcomes[3] = [];
+        
+    var moral = [];
+        moral[0] = new Array ("Child labour","Equal pay male/female workers","Outsourcing production", "Endorsed by government", "Recycled materials");
+        moral[1] = new Array ("Dangerous working conditions","Equal pay male/female workers","Outsourcing production","Endorsed by government","Polluting manufacturing"); 
+        moral[2] = new Array ("Good animal living conditions","Fair prices to farmers","Supporting local family farms","Endorsed by celebrity chef","Produced with same equipment that handled meat");
+        moral[3] = new Array ("Animal testing","Reduced prices in poor countries","Local brand","Endorsed by national dentist association","Bio-degradable packaging");
+        moral[4] = new Array ("Child labour","Workers paid above minimum wage","Outsourcing production","Endorsed by national sport alliance","Recycled materials");
+        moral[5] = new Array ("Child labour","Workers paid above minimum wage","Local brand","Brand logo visible","Recycled materials");
+    
+        
+    var myArray = [0,1,2,3,4,5],
+        myArray2 = [0,1,2,3,4,0], //Special array for morals
+        choicesets = ["laptops", "cars", "cereal bars", "toothpastes", "athletic shoes", "t-shirts"],
+        moralfoundations = ["harm", "fairness", "ingroup", "authority", "purity"];
+        
+    function shuffle(a) {
+        b = a.slice();
+        for (var i = b.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = b[i];
+        b[i] = b[j];
+        b[j] = temp;
+    }
+    return b;
+}
+        
+    var shuffled = shuffle(myArray),
+        shuffled2 = shuffle(myArray),
+        shuffled3 = shuffle(myArray2);
+    
+        
+    </script>
+    
+
+    
+    <style> 
+        body {
+            font-size: 100%;
+            width: 850px;
+        }
+        
+        .table_partI, .table_partII {
+            width: 1000px;
+        }
+             
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }  
+        
+        table {
+            table-layout: fixed;
+            width: 80%;
+        }
+        
+        #second, #third, #fourth, #pageII, #demographics, .partII, .partIII, .table_partI, .table_partII, #choice1, .go, .go2, .go3, .go4, #text1, #text2, .alert {
+            display: none;
+        } 
+        
+        #choiceText {
+            display: none;
+            color: red;
+            font-size: 1.25em;
+            font-weight: bold;
+        }
+        
+        .area, .area2 {
+            height: 200px;
+            width: 800px;
+        }
+        
+        .absolute {
+            position: absolute;
+            top: 60px;
+        }
+        
+        .absolute2 {
+            position: absolute;
+            top: 440px;
+            width: 850px;
+        }
+        
+        .absolute3 {
+            position: absolute;
+            top: 770px;
+        }
+        
+        .down {
+            position: absolute;
+            top: 800px;
+        }
+    </style>
+</head>
+    
+<body>     
+    <p id="choiceText"><b></b></p>
+
+    <div>
+<div id="pageI" class="partI">
+<p> <span style="font-size:20px">Welcome!</span> <br><br>
+For this research project we are interested to see how people make consumer choices based on limited information. You will be presented with six choice sets. You will be asked to choose between pairs of products, both produced by a different national company. The five most important attributes on which the products differ are presented. The products do not differ on price: they are specifically chosen so that they cost the same.
+<br><br>    
+After having considered these 5 attributes, we ask that you imagine making the decision in real life. Could you for example imagine that you have to replace your old phone and are browsing for a new one? For each choice, click the option that you would then actually choose. Clicking the preferred option initiates the next choice set. 
+<br><br>
+Please now copy and paste all the text above this line of text in the text area below before continuing.
+<br><br>
+<textarea class="area2"></textarea>
+</p>
+</div>
+
+<div id="pageII" class="partI">
+<p>Before we start we want to let you know that all responses are completely anonymous. We will not ask for your name. You are free to leave the experiment if you wish to.<br><br>
+<input id="check" type="checkbox"> I agree to my anonymous data being used<br><br>
+By ticking the box you indicate that you agree to participate in this short experiment and you allow the researchers to use the data you provide.<br><br>
+On the next page you will first be asked to answer some general questions. After this, the main part of the experiment starts.
+</p>
+</div>
+
+<div id="demographics" class="partI">
+<p>Please answer the following questions:
+<br><br>
+Age:
+<input type="number" id="age" class="demographics" min="1" max="120">
+<br><br>
+Gender:
+<select id="gender" class="demographics" name="gender">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+</select>
+<br><br>
+Education (highest degree or level of school completed):    
+<select id="education" class="demographics" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>No schooling completed</option>
+    <option>Nursery school to 8th grade</option>
+    <option>Some high school, no diploma</option>
+    <option>High school graduate, diploma or the equivalent (for example: GED)</option>
+    <option>Some college credit, no degree</option>
+    <option>Trade/technical/vocational training</option>
+    <option>Associate degree</option>
+    <option>Bachelor&#39s degree</option>
+    <option>Master&#39s degree</option>
+    <option>Professional degree</option>
+    <option>Doctorate degree</option>
+</select>
+<br><br>
+Political identification:
+Left Wing <input type="range" id="political" class="demographics" name="political"> Right Wing
+<br><br>
+By clicking start the main part of the experiment starts.
+</p>
+</div>
+
+<div id="general" class="partII">
+<p>Two new pieces of information about the previous products have become potentially available. The outcome of this additional information is of a categorical nature. For example, information about whether a house has a garden can either be 'Yes' or 'No'. On average, both possible outcomes for a piece of additional information are equally likely. This is comparable to presenting two houses from a neighbourhood in which out of all the houses 50% have a garden and 50% have no garden. Sometimes both options have the same outcome and sometimes they have different outcomes -  this is also equally likely.<br>  
+</p>
+</div>
+
+<div id="general2" class="partII">
+<p>However, the actual outcome of the new information is not freely available. To get this new information, you have to buy it by allocating coins towards the different pieces of additional information. For each choice set you will receive a total of 15 coins which all have to be spent to learn about up to 4 pieces of information. The chance that you will actually get this new information depends on the number of coins you allocate. For each piece of information for each product, you can allocate anywhere between 0 and 10 coins. 0 coins means no chance of finding out the new information, 1 coin means a 10% chance of finding out, and 10 coins means a 100% chance of finding out.<br><br>
+After you have allocated all 15 coins, the 'Find out' button has to be clicked. Depending on your allocation of coins and the random draw the outcome will either be shown or not. After you get this new information, you will have the opportunity to change your initial decision about which product you preferred.</p>
+</div>
+
+<div id="accountability" class="partII">
+<p>After all your choices have been made, one of those choices will be randomly selected. You will be requested to write an anonymous 100-word paragraph explaining why you chose it, just like you would tell someone. This will only be read by the experimenter.</p>
+</div>
+
+<div id="sales" class="partII">
+<p>After all your choices have been made, one of those chosen options will be randomly selected. You will be requested to write an anonymous 100-word paragraph stating why someone else should buy that option, just like a sales representative would. This will only be read by the experimenter.</p>
+</div>
+
+<div id="attention" class="partII">
+<p>
+<span>
+<table>
+<tr>
+    <td><b>Houses</b></td>
+    <td><b>Option 1</b></td>
+    <td><b>Option 2</b></td>
+</tr> 
+<tr>
+    <td>Garden</td>
+    <td><input type="number" value="5" readonly></td>
+    <td><input type="number" value="4" readonly></td>
+</tr>
+<tr>
+    <td>Accessible for the disabled</td>
+    <td><input type="number" value="0" readonly></td>
+    <td><input type="number" value="6" readonly></td>
+</tr> 
+</table> 
+</span>
+<br>  
+Take a look at the hypothetical table above, presenting two pieces of additional information. What would be the chance of finding out whether house 2 is accessible for someone with a disability?
+<br><br><input type="number" class="check" min="0" max="100"> %<br></p>
+</div>
+
+<div id="debrief" class="partIII">
+<p>Before you close the window we would like to first of all thank you for participating. The products we presented were hypothetical products with just as hypothetical attributes. We did however try to ensure that the attributes and their values were as realistic as possible.
+</p>
+</div>
+
+<div id="mfq" class="partIII">
+<p>
+<b>Part 1.</b> When you decide whether something is right or wrong, to what extent are the following considerations relevant to your thinking? Please rate each statement using this scale:<br>
+
+      [0] = not at all relevant (This consideration has nothing to do with my judgments of right and wrong)<br>
+         [1] = not very relevant<br>
+            [2] = slightly relevant<br>
+                [3] = somewhat relevant<br>
+                   [4] = very relevant<br>
+                      [5] = extremely relevant (This is one of the most important factors when I judge right and wrong)<br><br>
+
+Whether or not someone suffered emotionally<br>    
+    <select id="1" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not some people were treated differently than others<br>
+    <select id="2" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>  
+Whether or not someone&#39s action showed love for his or her country<br>
+    <select id="3" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not someone showed a lack of respect for authority <br>
+    <select id="4" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not someone violated standards of purity and decency<br>
+    <select id="5" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not someone was good at math<br>
+    <select id="6" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not someone cared for someone weak or vulnerable<br>
+    <select id="7" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not someone acted unfairly<br>
+    <select id="8" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not someone did something to betray his or her group<br>
+    <select id="9" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not someone conformed to the traditions of society <br>
+    <select id="10" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not someone did something disgusting<br>
+    <select id="11" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not someone was cruel<br>
+    <select id="12" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not someone was denied his or her rights<br>
+    <select id="13" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not someone showed a lack of loyalty<br>
+    <select id="14" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not an action caused chaos or disorder<br>
+    <select id="15" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+Whether or not someone acted in a way that God would approve of	<br>
+    <select id="16" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>not at all relevant (This consideration has nothing to do with my judgments of right and wrong)</option>
+    <option>not very relevant</option>
+    <option>slightly relevant</option>
+    <option>somewhat relevant</option>
+    <option>very relevant</option>
+    <option>extremely relevant (This is one of the most important factors when I judge right and wrong)</option>
+</select><br><br>
+    
+<b>Part 2.</b> Please read the following sentences and indicate your agreement or disagreement:<br><br>
+
+Compassion for those who are suffering is the most crucial virtue.<br>
+    <select id="17" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>    
+When the government makes laws, the number one principle should be ensuring that everyone is treated fairly.<br>
+    <select id="18" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+I am proud of my country&#39s history.<br>
+    <select id="19" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+Respect for authority is something all children need to learn.<br>
+    <select id="20" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+People should not do things that are disgusting, even if no one is harmed. <br>
+    <select id="21" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+It is better to do good than to do bad.<br>
+    <select id="22" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+One of the worst things a person could do is hurt a defenseless animal.<br>
+    <select id="23" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+Justice is the most important requirement for a society.<br>
+    <select id="24" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+People should be loyal to their family members, even when they have done something wrong.  <br>
+    <select id="25" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+Men and women each have different roles to play in society.<br>
+    <select id="26" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+I would call some acts wrong on the grounds that they are unnatural.<br>
+    <select id="27" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+It can never be right to kill a human being.<br>
+    <select id="28" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+I think it&#39s morally wrong that rich children inherit a lot of money while poor children inherit nothing.<br>
+    <select id="29" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+It is more important to be a team player than to express oneself.<br>
+    <select id="30" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+If I were a soldier and disagreed with my commanding officer&#39s orders, I would obey anyway because that is my duty.<br>
+    <select id="31" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br><br>
+Chastity is an important and valuable virtue.<br>
+    <select id="32" class="mfq" name="education">
+    <option disabled selected value> -- select an option -- </option>
+    <option>Strongly disagree</option>
+    <option>Moderately disagree</option>
+    <option>Slightly disagree</option>
+    <option>Slightly agree</option>
+    <option>Moderately agree</option>
+    <option>Strongly agree</option>
+</select><br>
+</p>
+</div>
+
+<div id="accountability2" class="partIII">
+<p>Please now write a minimum of 100 words about why you have chosen the option from the choice set that we have randomly picked and presented above:</p>     
+<textarea class="area" oninput="wordCounter()"></textarea>
+<p>Number of words: <span class="wordsNumber"></span></p>
+</div>
+
+<div id="sales2" class="partIII">
+<p>Please now write a minimum of 100 words in which you try to sell the option you chose from the choice set that we have randomly picked and presented above:</p> 
+<textarea class="area" oninput="wordCounter()"></textarea>
+<p>Number of words: <span class="wordsNumber"></span></p>
+</div>
+
+<div id="laptop" class="table_partI">    
+    <table id="tbl1">
+        <tr>
+            <td><b>Laptops</b></td>
+            <td id="opt1"><b>Option 1</b></td>
+            <td id="opt2"><b>Option 2</b></td>
+        </tr> 
+        
+        <tr>
+            <td>Memory</td>
+            <td>750 GB</td>
+            <td>250 GB</td>
+        </tr>
+        
+        <tr>
+            <td>Weight</td>
+            <td>2 kg</td>
+            <td>1.5 kg</td>
+        </tr>
+        
+        <tr>
+            <td>Resolution</td>
+            <td>4K Ultra HD (3.840 x 2.160 pixels)</td>
+            <td>Full HD (1.920 x 1.080 pixels)</td>
+        </tr>
+        
+        <tr>
+            <td>Battery life</td>
+            <td>7 hours</td>
+            <td>15 hours</td>
+        </tr>
+        
+        <tr>
+            <td>Touchscreen</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+                
+    </table>    
+    </div>    
+    
+<div id="car" class="table_partI">    
+    <table>
+        <tr>
+            <td><b>Cars</b></td>
+            <td id="opt1"><b>Option 1</b></td>
+            <td id="opt2"><b>Option 2</b></td>
+        </tr> 
+        
+        <tr>
+            <td>Sunroof</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        
+        <tr>
+            <td>No. of airbags</td>
+            <td>4</td>
+            <td>8</td>
+        </tr>
+        
+        <tr>
+            <td>Parking sensors</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        
+        <tr>
+            <td>Multimedia display size</td>
+            <td>12.3 inch</td>
+            <td>6.5 inch</td>
+        </tr>
+        
+        <tr>
+            <td>In-car Wi-Fi connectivity</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+                
+    </table>    
+    </div>
+
+<div id="cereal bar" class="table_partI">
+    <table>
+        <tr>
+            <td><b>Cereal bars</b></td>
+            <td id="opt1"><b>Option 1</b></td>
+            <td id="opt2"><b>Option 2</b></td>
+        </tr> 
+        
+        <tr>
+            <td>Energy</td>
+            <td>429 kcal</td>
+            <td>554 kcal</td>
+        </tr>
+        
+        <tr>
+            <td>Protein</td>
+            <td>4.6g</td>
+            <td>19.5g</td>
+        </tr>
+        
+        <tr>
+            <td>Sugars</td>
+            <td>34.1g</td>
+            <td>16.1g</td>
+        </tr>
+        
+        <tr>
+            <td>Fat</td>
+            <td>13.6g</td>
+            <td>32g</td>
+        </tr>
+        
+        <tr>
+            <td>No. of available flavours (plus example)</td>
+            <td>2 (Pecan apricot delight)</td>
+            <td>5 (Almond banana crunch)</td>
+        </tr>
+                
+    </table>    
+    </div>
+
+<div id="toothpaste" class="table_partI">
+    <table>
+        <tr>
+            <td><b>Toothpastes</b></td>
+            <td id="opt1"><b>Option 1</b></td>
+            <td id="opt2"><b>Option 2</b></td>
+        </tr> 
+        
+        <tr>
+            <td>Kind of tube</td>
+            <td>Pump system</td>
+            <td>Squeeze tube</td>
+        </tr>
+        
+        <tr>
+            <td>Hours of protection</td>
+            <td>12</td>
+            <td>24</td>
+        </tr>
+        
+        <tr>
+            <td>Whitening</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        
+        <tr>
+            <td>Enamel strengthening</td>
+            <td>High</td>
+            <td>Low</td>
+        </tr>
+        
+        <tr>
+            <td>Extra gum strenghtening</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+                
+    </table>    
+    </div>
+
+<div id="athletic shoe" class="table_partI">
+    <table>
+        <tr>
+            <td><b>Athletic shoes</b></td>
+            <td id="opt1"><b>Option 1</b></td>
+            <td id="opt2"><b>Option 2</b></td>
+        </tr> 
+        
+        <tr>
+            <td>Weight</td>
+            <td>Light</td>
+            <td>Medium</td>
+        </tr>
+        
+        <tr>
+            <td>No. of colours available</td>
+            <td>5</td>
+            <td>1</td>
+        </tr>
+        
+        <tr>
+            <td>Extra heel support</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        
+        <tr>
+            <td>Ventilation</td>
+            <td>Low</td>
+            <td>Medium</td>
+        </tr>
+        
+        <tr>
+            <td>Shock absorption</td>
+            <td>High</td>
+            <td>Medium</td>
+        </tr>
+                
+    </table>    
+    </div>
+
+<div id="t-shirt" class="table_partI">
+    <table>
+        <tr>
+            <td><b>T-Shirts</b></td>
+            <td id="opt1"><b>Option 1</b></td>
+            <td id="opt2"><b>Option 2</b></td>
+        </tr> 
+        
+        <tr>
+            <td>Neck</td>
+            <td>V-neck</td>
+            <td>Crew-neck</td>
+        </tr>
+        
+        <tr>
+            <td>Sleeves</td>
+            <td>Long</td>
+            <td>Short</td>
+        </tr>
+        
+        <tr>
+            <td>No. of colours available</td>
+            <td>1</td>
+            <td>5</td>
+        </tr>
+        
+        <tr>
+            <td>Quick dry</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        
+        <tr>
+            <td>Tightness</td>
+            <td>Loose</td>
+            <td>Medium</td>
+        </tr>
+                
+    </table>    
+    </div>
+
+<div id="laptop" class="table_partII">
+    <form class="commentForm" oninput="coinCounter()">
+    <table>
+        <tr>
+            <td><b>Laptops</b></td>
+            <td id="opt1" class="option1"><b>Option 1</b></td>
+            <td id="opt2" class="option2"><b>Option 2</b></td>
+        </tr> 
+        
+        <tr>
+            <td>Memory</td>
+            <td>750 GB</td>
+            <td>250 GB</td>
+        </tr>
+        
+        <tr>
+            <td>Weight</td>
+            <td>2 kg</td>
+            <td>1.5 kg</td>
+        </tr>
+        
+        <tr>
+            <td>Resolution</td>
+            <td>4K Ultra HD (3.840 x 2.160 pixels)</td>
+            <td>Full HD (1.920 x 1.080 pixels)</td>
+        </tr>
+        
+        <tr>
+            <td>Battery life</td>
+            <td>7 hours</td>
+            <td>15 hours</td>
+        </tr>
+        
+        <tr>
+            <td>Touchscreen</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td colspan="3"><b>Additional information:</b></td>
+        </tr>
+        
+        <tr>
+            <td class="random"></td>
+            <td><input type="number" id="numb" class="numb" min="0" max="10" value="0"><p class="outcome"></p></td>
+            <td><input type="number" id="numb2" class="numb2" min="0" max="10" value="0"><p class="outcome2"></p></td>
+        </tr>
+        
+        <tr>
+            <td>Free 10 day anti-virus trial</td>
+            <td><input type="number" id="numb3" class="numb3" min="0" max="10" value="0"><p class="outcome3"></p></td>
+            <td><input type="number" id="numb4" class="numb4" min="0" max="10" value="0"><p class="outcome4"></p></td>
+        </tr>
+                
+    </table>  
+    <p class="coinsLeft">Amount of coins left: <span id="result2" class="result">15</span></p>
+    </form> 
+</div>
+
+<div id="car" class="table_partII">
+    <form class="commentForm" oninput="coinCounter()">
+    <table>
+        <tr>
+            <td><b>Cars</b></td>
+            <td id="opt1" class="option1"><b>Option 1</b></td>
+            <td id="opt2" class="option2"><b>Option 2</b></td>
+        </tr> 
+        
+        <tr>
+            <td>Sunroof</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        
+        <tr>
+            <td>No. of airbags</td>
+            <td>4</td>
+            <td>8</td>
+        </tr>
+        
+        <tr>
+            <td>Parking sensors</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        
+        <tr>
+            <td>Multimedia display size</td>
+            <td>12.3 inch</td>
+            <td>6.5 inch</td>
+        </tr>
+        
+        <tr>
+            <td>In-car Wi-Fi connectivity</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <tr>
+            <td colspan="3"><b>Additional information:</b></td>
+        </tr>
+        
+        <tr>
+            <td class="random"></td>
+            <td><input type="number" id="numb" class="numb" min="0" max="10" value="0"><p class="outcome"></p></td>
+            <td><input type="number" id="numb2" class="numb2" min="0" max="10" value="0"><p class="outcome2"></p></td>
+        </tr>
+        
+        <tr>
+            <td>Sunglass holder</td>
+            <td><input type="number" id="numb3" class="numb3" min="0" max="10" value="0"><p class="outcome3"></p></td>
+            <td><input type="number" id="numb4" class="numb4" min="0" max="10" value="0"><p class="outcome4"></p></td>
+        </tr>
+                
+    </table>
+    <p class="coinsLeft">Amount of coins left: <span id="result2" class="result">15</span></p>
+    </form>     
+</div>
+
+<div id="cereal bar" class="table_partII">
+    <form class="commentForm" oninput="coinCounter()">
+    <table>
+           <tr>
+            <td><b>Cereal bars</b></td>
+            <td id="opt1" class="option1"><b>Option 1</b></td>
+            <td id="opt2" class="option2"><b>Option 2</b></td>
+        </tr> 
+        
+        <tr>
+            <td>Energy</td>
+            <td>429 kcal</td>
+            <td>554 kcal</td>
+        </tr>
+        
+        <tr>
+            <td>Protein</td>
+            <td>4.6g</td>
+            <td>19.5g</td>
+        </tr>
+        
+        <tr>
+            <td>Sugars</td>
+            <td>34.1g</td>
+            <td>16.1g</td>
+        </tr>
+        
+        <tr>
+            <td>Fat</td>
+            <td>13.6g</td>
+            <td>32g</td>
+        </tr>
+        
+        <tr>
+            <td>No. of available flavours (plus example)</td>
+            <td>2 (Pecan apricot delight)</td>
+            <td>5 (Almond banana crunch)</td>
+        </tr>
+        
+    <tr>
+            <td colspan="3"><b>Additional information:</b></td>
+        </tr>
+        
+        <tr>
+            <td class="random"></td>
+            <td><input type="number" id="numb" class="numb" min="0" max="10" value="0"><p class="outcome"></p></td>
+            <td><input type="number" id="numb2" class="numb2" min="0" max="10" value="0"><p class="outcome2"></p></td>
+        </tr>
+        
+        <tr>
+            <td>Chopped nuts</td>
+            <td><input type="number" id="numb3" class="numb3" min="0" max="10" value="0"><p class="outcome3"></p></td>
+            <td><input type="number" id="numb4" class="numb4" min="0" max="10" value="0"><p class="outcome4"></p></td>
+        </tr>
+        
+    </table>
+    <p class="coinsLeft">Amount of coins left: <span id="result2" class="result">15</span></p>
+    </form> 
+</div>
+
+<div class="table_partII">
+    <form class="commentForm" oninput="coinCounter()">
+    <table>
+        <tr>
+            <td><b>Toothpastes</b></td>
+            <td id="opt1" class="option1"><b>Option 1</b></td>
+            <td id="opt2" class="option2"><b>Option 2</b></td>
+        </tr> 
+        
+        <tr>
+            <td>Kind of tube</td>
+            <td>Pump system</td>
+            <td>Squeeze tube</td>
+        </tr>
+        
+        <tr>
+            <td>Hours of protection</td>
+            <td>12</td>
+            <td>24</td>
+        </tr>
+        
+        <tr>
+            <td>Whitening</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        
+        <tr>
+            <td>Enamel strengthening</td>
+            <td>High</td>
+            <td>Low</td>
+        </tr>
+        
+        <tr>
+            <td>Extra gum strenghtening</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        
+    <tr>
+            <td colspan="3"><b>Additional information:</b></td>
+        </tr>
+        
+        <tr>
+            <td class="random"></td>
+            <td><input type="number" id="numb" class="numb" min="0" max="10" value="0"><p class="outcome"></p></td>
+            <td><input type="number" id="numb2" class="numb2" min="0" max="10" value="0"><p class="outcome2"></p></td>
+        </tr>
+        
+        <tr>
+            <td>Colourful packaging</td>
+            <td><input type="number" id="numb3" class="numb3" min="0" max="10" value="0"><p class="outcome3"></p></td>
+            <td><input type="number" id="numb4" class="numb4" min="0" max="10" value="0"><p class="outcome4"></p></td>
+        </tr>
+        
+    </table>
+    <p class="coinsLeft">Amount of coins left: <span id="result2" class="result">15</span></p>
+    </form> 
+</div>
+
+<div class="table_partII">
+    <form class="commentForm" oninput="coinCounter()">
+    <table>
+        <tr>
+            <td><b>Athletic shoes</b></td>
+            <td id="opt1" class="option1"><b>Option 1</b></td>
+            <td id="opt2" class="option2"><b>Option 2</b></td>
+        </tr> 
+        
+        <tr>
+            <td>Weight</td>
+            <td>Light</td>
+            <td>Medium</td>
+        </tr>
+        
+        <tr>
+            <td>No. of colours available</td>
+            <td>5</td>
+            <td>1</td>
+        </tr>
+        
+        <tr>
+            <td>Extra heel support</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        
+        <tr>
+            <td>Ventilation</td>
+            <td>Low</td>
+            <td>Medium</td>
+        </tr>
+        
+        <tr>
+            <td>Shock absorption</td>
+            <td>High</td>
+            <td>Medium</td>
+        </tr>
+        
+    <tr>
+            <td colspan="3"><b>Additional information:</b></td>
+        </tr>
+        
+        <tr>
+            <td class="random"></td>
+            <td><input type="number" id="numb" class="numb" min="0" max="10" value="0"><p class="outcome"></p></td>
+            <td><input type="number" id="numb2" class="numb2" min="0" max="10" value="0"><p class="outcome2"></p></td>
+        </tr>
+        
+        <tr>
+            <td>Additional paper wrapping in shoebox</td>
+            <td><input type="number" id="numb3" class="numb3" min="0" max="10" value="0"><p class="outcome3"></p></td>
+            <td><input type="number" id="numb4" class="numb4" min="0" max="10" value="0"><p class="outcome4"></p></td>
+        </tr>
+        
+    </table>
+    <p class="coinsLeft">Amount of coins left: <span id="result2" class="result">15</span></p>
+    </form> 
+</div>
+
+<div id="t-shirt" class="table_partII">
+    <form class="commentForm" oninput="coinCounter()">
+    <table>
+        <tr>
+            <td><b>T-Shirts</b></td>
+            <td id="opt1" class="option1"><b>Option 1</b></td>
+            <td id="opt2" class="option2"><b>Option 2</b></td>
+        </tr> 
+        
+        <tr>
+            <td>Neck</td>
+            <td>V-neck</td>
+            <td>Crew-neck</td>
+        </tr>
+        
+        <tr>
+            <td>Sleeves</td>
+            <td>Long</td>
+            <td>Short</td>
+        </tr>
+        
+        <tr>
+            <td>No. of colours available</td>
+            <td>1</td>
+            <td>5</td>
+        </tr>
+        
+        <tr>
+            <td>Quick dry</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        
+        <tr>
+            <td>Tightness</td>
+            <td>Loose</td>
+            <td>Medium</td>
+        </tr>
+                
+    <tr>
+            <td colspan="3"><b>Additional information:</b></td>
+        </tr>
+        
+        <tr>
+            <td class="random"></td>
+            <td><input type="number" id="numb" class="numb" min="0" max="10" value="0"><p class="outcome"></p></td>
+            <td><input type="number" id="numb2" class="numb2" min="0" max="10" value="0"><p class="outcome2"></p></td>
+        </tr>
+        
+        <tr>
+            <td>Extra tag</td>
+            <td><input type="number" id="numb3" class="numb3" min="0" max="10" value="0"><p class="outcome3"></p></td>
+            <td><input type="number" id="numb4" class="numb4" min="0" max="10" value="0"><p class="outcome4"></p></td>
+        </tr>
+        
+    </table>
+    <p class="coinsLeft">Amount of coins left: <span id="result2" class="result">15</span></p>
+    </form> 
+</div>
+
+<div id="alert" class="alert">
+<p>Remember: <br>
+    - 0 coins means a 0% chance
+    - 1 coin means a 10% chance
+    - 10 coins means a 100% chance<br>
+    - Every extra coin increases your chances with 10%<br><br>
+6 coins have been allocated towards this piece of information.</p>
+</div>
+
+<div id="alert2" class="alert">
+<p>Check amount of coins. Remember to spend exactly 15 coins.</p>
+</div>
+
+<div id="alert3" class="alert">
+<p>Remember the range. The amount of coins should be between 0 and 10</p>
+</div>
+
+<div id="alert4" class="alert">
+<p>Copy/Paste the text including 'Welcome!' and 'choice set.'</p>
+</div>
+
+<div id="alert5" class="alert">
+<p>Are you sure we cannot use your data?<br>
+This precludes you from continuing the experiment.</p>
+</div>
+    
+</div>
+    
+    <!--HTML Part I-->
+    <button id="first" class="instructions">Next</button>
+    <button id="second" class="instructions">Next</button>
+    
+    <button id="start" class="go">Start</button>
+    
+    <p id="text1">Which option do you prefer:</p>
+    <button id="btn1" class="go">Option 1</button>
+    <button id="btn2" class="go">Option 2</button>
+
+    <!--HTML Part II-->
+    <button id="third" class="instructions">Next</button>
+    <button id="fourth" class="instructions">Next</button>
+    
+    <button id="start2" class="go2">Start part II</button>
+    
+    <button id="insert" class="go3">Find out</button>
+    
+    <p id="text2">Which option do you prefer now:</p>
+    <button id="btn1" class="go2">Option 1</button>
+    <button id="btn2" class="go2">Option 2</button>
+    
+    <!--HTML Part III-->
+    <button id="submit" class="go4">Submit story</button>
+    <button id="send" class="go4">Send responses</button>
+
+<!--BEGINNING THE EXPERIMENT-->
+    <script>
+    $(document).ready(function() {
+        $("#first").click(function() {
+            var textInput = $(".area2").val();
+            var textNoSpace = textInput.replace(/\s/g, "");
+            var len = textNoSpace.length;
+                if (len != 647) {
+                alert($("#alert4").text());
+                return;
+                }
+            activate_button();
+            printFunction(); ////////////////////
+            $(this).hide();
+            $("#pageI").hide();
+            $("#second").show();
+            $("#pageII").show();
+        });
+    });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#second").click(function() {
+                if ($("#check").is(':checked')) {
+                agree = true;
+                $(this).hide();
+                $("#pageII").hide();
+                $("#demographics").show();
+                $("#start.go").show();
+                activate_button();
+                printFunction(); ////////////////////
+                } else {
+                alert($("#alert5").text());
+                }
+            });
+        });
+    </script>
+
+<!--FUNCTION CHECKING DEMOGRAPHICS AND PRESENTING FIRST TRIAL-->
+    <script>
+    $(document).ready(function(){
+        i = 0;
+        trial_id = 0;
+        $(".go").click(function(){
+            ppt_age = $("#age").val();
+            ppt_gender = $("#gender option:selected").text();
+            ppt_education = $("#education option:selected").text();
+            ppt_political = $("#political").val();
+            if (!$("#age").val() || $("#age")[0].checkValidity() == false) {
+            alert("Check your entered age");
+            return;
+            } else if ($("#gender")[0].selectedIndex === 0) {
+            alert("Select your gender");
+            return;
+            } else if ($("#education")[0].selectedIndex === 0) {
+            alert("Select your highest education");
+            return;
+            };  
+            
+            $("#start.go").hide();
+            $(".partI").hide();
+            $("#text1").show();
+            $("#btn1.go").show();
+            $("#btn2.go").show();
+             
+            choiceset_id = choicesets[shuffled[i]];
+            
+            if (this.id == 'btn1') {
+                choice[shuffled[i]] = "option 1";
+                $(".option1").eq(shuffled[i]).css("color", "red");
+                this_choice_id = choice[shuffled[i]];
+                i++;
+            } else if (this.id == 'btn2'){
+                choice[shuffled[i]] = "option 2"; 
+                $(".option2").eq(shuffled[i]).css("color", "red");
+                this_choice_id = choice[shuffled[i]];
+                i++;
+            };
+            if (i < 6) {trial_id++;};  
+            
+            activate_button();
+            printFunction(); ////////////////////  
+            $("#randtest8").text(choice);        
+            
+            $(".table_partI").hide();
+            $(".table_partI").eq(shuffled[i]).show();           
+
+            if (i > 5) {
+                $(this).hide();
+                $("#text1").hide();
+                $(".go").hide();
+                $("#general.partII").show();
+                $("#third").show();
+                block_id = "Part II";
+            } 
+        });
+    });        
+    </script>
+    
+    <script>
+    $(document).ready(function(){
+        $("#third").click(function(){
+            this_choice_id = null; //reset choice
+            choiceset_id = null;
+            trial_id = null;
+            
+            activate_button();
+            printFunction(); ////////////////////          
+            
+            $(this).hide();
+            $("#general2.partII").show();
+            $("#attention.partII").show();
+            if (condition == "control") {
+            $("#start2.go2").show();
+            } else {
+                $("#fourth").show();
+            }
+        })
+    })
+    </script>
+    
+    <script>
+    $(document).ready(function(){
+        $("#fourth").click(function(){
+                if ($(".check").val() != 60) {
+                alert($("#alert").text());
+                return;
+            }
+            
+            activate_button();
+            printFunction(); ////////////////////
+            
+            $(this).hide();
+            $(".partII").hide();
+            $("#start2.go2").show();
+            if (condition == "accountability") {
+            $("#accountability.partII").show();
+            } else if (condition == "sales") {
+            $("#sales.partII").show();
+            } 
+            })
+    })
+    </script>
+    
+    <script>
+    $(document).ready(function(){
+        j = 0;
+        k = 0;
+        trial_id = 0;
+        $(".go2").click(function(){
+            if ($(".check").val() != 60) {
+                alert($("#alert").text());
+                return;
+            };          
+            
+            
+            $(".partII").hide();            
+            $(".go2").hide();
+            $("#text2").hide();
+            
+            $("#choiceText").show();
+            $("#choiceText").text("Initially, you chose " + choice[shuffled2[j]]);
+            $(".table_partII").hide();
+            $(".table_partII").eq(shuffled2[j]).show();
+            $(".go3").show();
+            
+            choiceset_id = choicesets[shuffled2[k]];
+            additional_foundation = moralfoundations[shuffled3[k]];
+            
+            if (this.id == 'btn1') {
+                choice2[shuffled2[k]] = "option 1"; 
+                $(".option1").eq(shuffled2[k]).css("color", "red");
+                if (choice2[shuffled2[k]] != choice[shuffled2[k]]) {
+                    changed[shuffled2[k]] = true;
+                    $(".option2").eq(shuffled2[k]).css("color", "black");
+                }
+                this_choice_id = choice2[shuffled2[k]]; 
+                this_choice_changed = changed[shuffled2[k]]
+                k++;
+            } else if (this.id == 'btn2'){
+                choice2[shuffled2[k]] = "option 2"; 
+                $(".option2").eq(shuffled2[k]).css("color", "red");
+                if (choice2[shuffled2[k]] != choice[shuffled2[k]]) {
+                    changed[shuffled2[k]] = true;
+                    $(".option1").eq(shuffled2[k]).css("color", "black");
+                }
+                this_choice_id = choice2[shuffled2[k]]; 
+                this_choice_changed = changed[shuffled2[k]]
+                k++;
+            }; 
+            
+            
+            
+            if (j<6) {trial_id++;};
+            
+            if (j <= 5) {
+                $(".random").eq(shuffled2[j]).text(moral[shuffled2[j]][shuffled3[j]]);
+            };
+            if (j > 5) {
+                block_id = "part III";
+                $(".go3").hide();
+                $("#choiceText").hide();
+                storyFunction();
+                trial_id = null;
+            }; 
+            
+            $("#randtest9").text(choice2);            
+            activate_button();
+            printFunction(); /////////////
+        });
+    });
+            
+    </script>
+        
+    
+<!--FUNCTION CHECKING THE AMOUNT OF COINS ALLOCATED ON "FIND OUT" CLICK-->
+    <script>
+        $(document).ready(function(){
+            $(".go3").click(function(){
+            if ($(".commentForm").eq(shuffled2[j])[0].checkValidity() == false) {
+                alert($("#alert3").text());
+                return;
+            } else if (totalCoins != 0) {
+                alert($("#alert2").text());
+                return;
+            } else {
+                totalCoins = 15; //reset the variable                
+                outcomeFunction();
+                $(this).hide();
+                $(".coinsLeft").eq(shuffled2[j]).hide();
+                $("#btn1.go2").show();
+                $("#btn2.go2").show();
+                $("#text2").show();
+                j++;
+                
+            activate_button();
+            printFunction(); ////////////////////                   
+            }
+        });
+    });    
+    </script>
+    
+<!--FUNCTION CALLING MFQ-->
+    <script>
+        $(document).ready(function() {
+            $("#submit.go4").click(function(){
+                if (words == null || words < 5) {
+                    alert("Number of words should be a minimum of 5 words");
+                } else {
+                    $(this).hide();
+                    $(".x").removeClass("down");
+                    $(".table_partII").hide();
+                    $(".partIII").hide();
+                    $("#choiceText").hide();
+                    $("#mfq.partIII").show();
+                    $("#send").show();
+                   
+                    activate_button();
+                    printFunction(); //////////////////// 
+                }
+            });
+        });
+    </script> 
+    
+<!--FUNCTION CALLING DEBRIEF PAGE-->
+<script>
+$(document).ready(function() {
+    $("#send").click(function(){
+        var selection = $(".mfq"),
+            t = 0,
+            v = selection.length;
+        for (t;t<v;t++) {
+        if (selection[t].selectedIndex === 0) {
+            alert("Make sure everything is filled in");
+            return;
+        } 
+        }
+        mfqFunction();
+        $(this).hide();
+        $("#mfq").hide();
+        $("#debrief.partIII").show();
+        window.onbeforeunload = null;
+        
+        activate_button();
+        printFunction(); ////////////////////
+    })
+})    
+</script>
+
+
+<!--SEPARATE FUNCTIONs-->
+        
+    
+<!--FUNCTION THAT RANDOMIZES OUTCOME BASED ON COINS ALLOCATED (TO BE INTEGRATED IN FUNCTION ABOVE)-->
+    <script>
+    function outcomeFunction() {
+        var a = $(".numb").eq(shuffled2[j]).val(),
+            b = $(".numb2").eq(shuffled2[j]).val(),
+            c = $(".numb3").eq(shuffled2[j]).val(),
+            d = $(".numb4").eq(shuffled2[j]).val(),
+            e = a/10,
+            f = b/10,
+            g = c/10,
+            h = d/10;
+                if (a > 0) {
+                    if (Math.random() < e) {
+                        if (Math.random() < .5) {
+                        $(".outcome").eq(shuffled2[j]).text("Yes");  
+                        } else {
+                        $(".outcome").eq(shuffled2[j]).text("No"); 
+                        }
+                    } else {
+                        $(".outcome").eq(shuffled2[j]).text("-"); 
+                }
+                } else {
+                    $(".outcome").eq(shuffled2[j]).text("-");
+                }
+                if (b > 0) {
+                    if (Math.random() < f) {
+                        if (Math.random() < .5) {
+                        $(".outcome2").eq(shuffled2[j]).text("Yes");  
+                        } else {
+                        $(".outcome2").eq(shuffled2[j]).text("No"); 
+                        }
+                    } else {
+                        $(".outcome2").eq(shuffled2[j]).text("-"); 
+                }
+                } else {
+                        $(".outcome2").eq(shuffled2[j]).text("-"); 
+                }
+                if (c > 0) {
+                    if (Math.random() < g) {
+                        if (Math.random() < .5) {
+                        $(".outcome3").eq(shuffled2[j]).text("Yes");  
+                        } else {
+                        $(".outcome3").eq(shuffled2[j]).text("No"); 
+                        }
+                    } else {
+                        $(".outcome3").eq(shuffled2[j]).text("-"); 
+                }
+                } else {
+                    $(".outcome3").eq(shuffled2[j]).text("-");
+                }
+                if (d > 0) {
+                    if (Math.random() < h) {
+                        if (Math.random() < .5) {
+                        $(".outcome4").eq(shuffled2[j]).text("Yes");  
+                        } else {
+                        $(".outcome4").eq(shuffled2[j]).text("No"); 
+                        }
+                    } else {
+                        $(".outcome4").eq(shuffled2[j]).text("-"); 
+                }
+                } else {
+                        $(".outcome4").eq(shuffled2[j]).text("-"); 
+                }
+                $(".numb").eq(shuffled2[j]).hide();
+                $(".numb2").eq(shuffled2[j]).hide();
+                $(".numb3").eq(shuffled2[j]).hide();
+                $(".numb4").eq(shuffled2[j]).hide();
+        
+        coins[0][shuffled2[j]] = a;coins[1][shuffled2[j]] = b;coins[2][shuffled2[j]] = c;coins[3][shuffled2[j]] = d;
+        outcomes[0][shuffled2[j]] = $(".outcome").eq(shuffled2[j]).text();outcomes[1][shuffled2[j]] = $(".outcome2").eq(shuffled2[j]).text();outcomes[2][shuffled2[j]] = $(".outcome3").eq(shuffled2[j]).text();outcomes[3][shuffled2[j]] = $(".outcome4").eq(shuffled2[j]).text();
+        
+        if (choice[shuffled2[j]] == "option 1") {
+            coins_moral_chosen = a;coins_economic_chosen = c;coins_moral_not_chosen = b;coins_economic_not_chosen = d;
+            outcome_moral_chosen = $(".outcome").eq(shuffled2[j]).text();outcome_economic_chosen = $(".outcome3").eq(shuffled2[j]).text();outcome_moral_not_chosen = $(".outcome2").eq(shuffled2[j]).text();outcome_economic_not_chosen = $(".outcome4").eq(shuffled2[j]).text();
+        } else if (choice[shuffled2[j]] == "option 2") {
+            coins_moral_chosen = b;coins_economic_chosen = d;coins_moral_not_chosen = a;coins_economic_not_chosen = c;
+            outcome_moral_chosen = $(".outcome2").eq(shuffled2[j]).text();outcome_economic_chosen = $(".outcome4").eq(shuffled2[j]).text();outcome_moral_not_chosen = $(".outcome").eq(shuffled2[j]).text();outcome_economic_not_chosen = $(".outcome3").eq(shuffled2[j]).text();
+        }
+        
+        coins_moral_option1 = a;coins_moral_option2 = b;coins_economic_option1 = c;coins_economic_option2=d;
+        outcome_moral_option1 = $(".outcome").eq(shuffled2[j]).text();outcome_moral_option2 = $(".outcome2").eq(shuffled2[j]).text();outcome_economic_option1 = $(".outcome3").eq(shuffled2[j]).text(); outcome_economic_option2 = $(".outcome4").eq(shuffled2[j]).text();
+    } 
+    </script>  
+    
+
+        
+<!--FUNCTION THAT SHOWS APPROPRIATE STORY TO BE TYPED DEPENDING ON CONDITION-->
+    <script>
+    function storyFunction() {        
+            if (condition == "control") {
+                $("#mfq.partIII").show();
+                $("#send").show();
+            } else {
+                $("#choiceText").show();
+                $("#choiceText").text("You chose " + choice2[storySet]);
+                $(".table_partII").eq(storySet).show().addClass("absolute");
+                $(".numb").eq(storySet).show();
+                $(".numb2").eq(storySet).show();
+                $(".numb3").eq(storySet).show();
+                $(".numb4").eq(storySet).show();
+                $("#submit.go4").show().addClass("absolute3");
+                $(".x").addClass("down");
+            if (condition == "accountability") {          
+                $("#accountability2.partIII").show().addClass("absolute2");
+            } else if (condition == "sales") {
+                $("#sales2.partIII").show().addClass("absolute2");
+            }
+        }
+        }
+    </script>
+    
+<!--WORD COUNTER FUNCTION THAT IS CALLED WITHIN THE TEXTAREA-->
+    <script>
+    function wordCounter() {
+        var regex = /\s+/gi;
+        if (condition == "sales") {
+            text = $(".area").eq(1).val();
+        } else {
+            text = $(".area").val();
+        }
+            words = text.trim().replace(regex, ' ').split(' ').length;
+                $(".wordsNumber").text(words);
+        }        
+    </script>
+    
+    
+    <script>
+    function coinCounter() {
+        var m = $(".numb").eq(shuffled2[j]).val(),
+            n = $(".numb2").eq(shuffled2[j]).val(),
+            o = $(".numb3").eq(shuffled2[j]).val(),
+            p = $(".numb4").eq(shuffled2[j]).val();
+            totalCoins = 15 - m - n - o - p;
+        $(".result").eq(shuffled2[j]).text(totalCoins);
+    }
+    </script>
+    
+    <script>
+    function mfqFunction() {
+       mfq_1 = document.getElementById("1").selectedIndex - 1;
+        mfq_2 = $("#2.mfq").prop("selectedIndex") - 1;
+        mfq_3 = $('#3.mfq').prop('selectedIndex') - 1; 
+        mfq_4 = $('#4.mfq').prop('selectedIndex') - 1; 
+        mfq_5 = $('#5.mfq').prop('selectedIndex') - 1; 
+        mfq_6 = $('#6.mfq').prop('selectedIndex') - 1; 
+        mfq_7 = $('#7.mfq').prop('selectedIndex') - 1; 
+        mfq_8 = $('#8.mfq').prop('selectedIndex') - 1; 
+        mfq_9 = $('#9.mfq').prop('selectedIndex') - 1; 
+        mfq_10 = $('#10.mfq').prop('selectedIndex') - 1; 
+        mfq_11 = $('#11.mfq').prop('selectedIndex') - 1; 
+        mfq_12 = $('#12.mfq').prop('selectedIndex') - 1; 
+        mfq_13 = $('#13.mfq').prop('selectedIndex') - 1; 
+        mfq_14 = $('#14.mfq').prop('selectedIndex') - 1; 
+        mfq_15 = $('#15.mfq').prop('selectedIndex') - 1; 
+        mfq_16 = $('#16.mfq').prop('selectedIndex') - 1; 
+        mfq_17 = $('#17.mfq').prop('selectedIndex') - 1; 
+        mfq_18 = $('#18.mfq').prop('selectedIndex') - 1; 
+        mfq_19 = $('#19.mfq').prop('selectedIndex') - 1; 
+        mfq_20 = $('#20.mfq').prop('selectedIndex') - 1; 
+        mfq_21 = $('#21.mfq').prop('selectedIndex') - 1; 
+        mfq_22 = $('#22.mfq').prop('selectedIndex') - 1; 
+        mfq_23 = $('#23.mfq').prop('selectedIndex') - 1; 
+        mfq_24 = $('#24.mfq').prop('selectedIndex') - 1; 
+        mfq_25 = $('#25.mfq').prop('selectedIndex') - 1; 
+        mfq_26 = $('#26.mfq').prop('selectedIndex') - 1; 
+        mfq_27 = $('#27.mfq').prop('selectedIndex') - 1; 
+        mfq_28 = $('#28.mfq').prop('selectedIndex') - 1; 
+        mfq_29 = $('#29.mfq').prop('selectedIndex') - 1; 
+        mfq_30 = $('#30.mfq').prop('selectedIndex') - 1; 
+        mfq_31 = $('#31.mfq').prop('selectedIndex') - 1; 
+        mfq_32 = $('#32.mfq').prop('selectedIndex') - 1;         
+        
+        mfq_harm = mfq_1 + mfq_7 + mfq_12 + mfq_17 + mfq_23 + mfq_28;
+        mfq_fairness = mfq_2 + mfq_8 + mfq_13 + mfq_18 + mfq_24 + mfq_29;
+        mfq_ingroup = mfq_3 + mfq_9 + mfq_14 + mfq_19 + mfq_25 + mfq_30;
+        mfq_authority = mfq_4 + mfq_10 + mfq_15 + mfq_20 + mfq_26 + mfq_31;
+        mfq_purity = mfq_5 + mfq_11 + mfq_16 + mfq_21 + mfq_27 + mfq_32;
+        mfq_math_catch = mfq_6;
+        mfq_good_catch = mfq_22;
+    }
+    </script>
+    
+
+    
+<!--Random Tester-->
+<div class="x">
+    <h3>Testing randomization</h3>
+    
+    <script>   
+   
+        
+    $(document).ready(function(){
+            $("#randtest2").text(shuffled);
+        });  
+        
+    $(document).ready(function(){
+            $("#randtest4").text(shuffled2);
+        });
+        
+    $(document).ready(function(){
+            $("#randtest7").text(shuffled3);
+        });
+           
+        
+    </script>
+    <p id="randtest2"></p>
+    <p id="randtest4"></p>
+    <p id="randtest7"></p>
+    <p id="randtest8"></p>
+    <p id="randtest9"></p>
+    
+    <p id="randtest41"></p>
+    <p id="randtest42"></p>
+    <p id="randtest37"></p>
+    <p id="randtest16"></p>
+    <p id="randtest17"></p>
+    <p id="randtest18"></p>
+    <p id="randtest19"></p>
+    <p id="randtest20"></p>
+    <p id="randtest21"></p>
+    <p id="randtest23"></p>
+    <p id="randtest24"></p>
+    <p id="randtest56"></p>
+    <p id="randtest25"></p>
+    <p id="randtest26"></p>
+    <p id="randtest43"></p>
+    <p id="randtest44"></p>
+    <p id="randtest45"></p>
+    <p id="randtest46"></p>
+    <p id="randtest52"></p>
+    <p id="randtest53"></p>
+    <p id="randtest54"></p>
+    <p id="randtest55"></p>  
+        
+    <p id="randtest22"></p>
+    <p id="randtest35"></p>
+    <p id="randtest36"></p>
+    <p id="randtest47"></p>
+    <p id="randtest48"></p>
+    <p id="randtest49"></p>
+    <p id="randtest50"></p>
+    <p id="randtest51"></p>
+    
+    <p id="randtest27"></p>
+    <p id="randtest28"></p>
+    <p id="randtest29"></p>
+    <p id="randtest30"></p>    
+    <p id="randtest31"></p>
+    <p id="randtest32"></p>
+    <p id="randtest33"></p>
+    <p id="randtest34"></p>  
+    </div>
+
+        
+</body>
+</html>
